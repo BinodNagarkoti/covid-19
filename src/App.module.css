@@ -10,6 +10,7 @@ body {
     /* background-color: var(--main-dark-bgcolor); */
 }
 .container {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,9 +21,9 @@ body {
     margin: 50px 0;
 }
 @media (max-width: 770px) {
-    .container {
-        margin: 0 10%;
-    }
+    /* .container {
+        margin: 0% !important;
+    } */
     .image {
         width: 100%;
     }

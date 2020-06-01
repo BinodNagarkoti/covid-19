@@ -44,11 +44,7 @@ class App extends Component {
             );
         }
         return (
-            <div
-                className={style.container}
-                style={{ width: '100vw', backgroundColor: `${color}` }}
-            >
-                
+            <div className={style.container} style={{backgroundColor: `${color}` }}>
                 <img
                     className={style.image}
                     src={coronaImage}

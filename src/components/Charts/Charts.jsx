@@ -36,10 +36,6 @@ import {randomColor} from '../../randomColor'
 
 
      );
-    //  if(!confirmed){
-    //      return <div></div>
-    //  }
-    //  console.log(confirmed.value,recovered.value,deaths.value)
      const barChart = (
          confirmed ?(
              <Bar

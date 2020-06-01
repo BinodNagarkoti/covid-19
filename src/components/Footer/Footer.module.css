@@ -5,7 +5,8 @@
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     margin-top: 5%;
-
+    position: absolute;
+    bottom: 0;
     background-color: rgba(250, 250, 250, 0.4);
 }
 

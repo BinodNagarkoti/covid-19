@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/covid-19/static/css/main.e3c8e6ed.chunk.css",
-    "main.js": "/covid-19/static/js/main.25277a32.chunk.js",
-    "main.js.map": "/covid-19/static/js/main.25277a32.chunk.js.map",
+    "main.css": "/covid-19/static/css/main.12d8c3d7.chunk.css",
+    "main.js": "/covid-19/static/js/main.0887e15e.chunk.js",
+    "main.js.map": "/covid-19/static/js/main.0887e15e.chunk.js.map",
     "runtime-main.js": "/covid-19/static/js/runtime-main.aeb58cd9.js",
     "runtime-main.js.map": "/covid-19/static/js/runtime-main.aeb58cd9.js.map",
-    "static/js/2.8b1f12ac.chunk.js": "/covid-19/static/js/2.8b1f12ac.chunk.js",
-    "static/js/2.8b1f12ac.chunk.js.map": "/covid-19/static/js/2.8b1f12ac.chunk.js.map",
+    "static/js/2.ab44c2ac.chunk.js": "/covid-19/static/js/2.ab44c2ac.chunk.js",
+    "static/js/2.ab44c2ac.chunk.js.map": "/covid-19/static/js/2.ab44c2ac.chunk.js.map",
     "index.html": "/covid-19/index.html",
-    "precache-manifest.e550e7c9462749b8598c3fb1d45ab046.js": "/covid-19/precache-manifest.e550e7c9462749b8598c3fb1d45ab046.js",
+    "precache-manifest.b62a75806fb1f84469c16ad903f13c12.js": "/covid-19/precache-manifest.b62a75806fb1f84469c16ad903f13c12.js",
     "service-worker.js": "/covid-19/service-worker.js",
-    "static/css/main.e3c8e6ed.chunk.css.map": "/covid-19/static/css/main.e3c8e6ed.chunk.css.map",
-    "static/js/2.8b1f12ac.chunk.js.LICENSE.txt": "/covid-19/static/js/2.8b1f12ac.chunk.js.LICENSE.txt",
+    "static/css/main.12d8c3d7.chunk.css.map": "/covid-19/static/css/main.12d8c3d7.chunk.css.map",
+    "static/js/2.ab44c2ac.chunk.js.LICENSE.txt": "/covid-19/static/js/2.ab44c2ac.chunk.js.LICENSE.txt",
     "static/media/covid-19.png": "/covid-19/static/media/covid-19.6ce9074d.png"
   },
   "entrypoints": [
     "static/js/runtime-main.aeb58cd9.js",
-    "static/js/2.8b1f12ac.chunk.js",
-    "static/css/main.e3c8e6ed.chunk.css",
-    "static/js/main.25277a32.chunk.js"
+    "static/js/2.ab44c2ac.chunk.js",
+    "static/css/main.12d8c3d7.chunk.css",
+    "static/js/main.0887e15e.chunk.js"
   ]
 }

@@ -51,7 +51,6 @@ class App extends Component {
                 <img
                     className={style.image}
                     src={coronaImage}
-                    style={{ fill: 'white' }}
                     alt='COVID-19'
                 />
                 <Cards data={data} />

@@ -14,9 +14,6 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 50,
     minWidth: 220,
   },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
 }));
 const CountryPicker = ({ handleCountryChange }) => {
   const classes = useStyles();

@@ -8,10 +8,10 @@
 @media (max-width: 959px) {
     .container {
         width: 100%;
+        margin: 0 2px 0 2px;
     }
 }
 
-.container div{
+.container div {
     background-color: rgba(250, 250, 250, 0.7);
-
 }

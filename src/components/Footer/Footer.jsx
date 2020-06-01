@@ -8,8 +8,6 @@ const Footer=()=>{
 return (
 
     <div className={styles.container}>
-
-        <div className={styles.app}>
         <Typography> By <a href='https://github.com/BinodNagarkoti'>Binod Nagarkoti</a></Typography>
         <Typography className={styles.social_link}>
             <IconContext.Provider value={{ color: "#385898", size:'25px'}}>
@@ -26,11 +24,6 @@ return (
             </IconContext.Provider>
             </Typography>
             <Typography color='textSecondary' > May 31 2020 </Typography>
-        </div>
-
-
-
-
     </div>
 )
 

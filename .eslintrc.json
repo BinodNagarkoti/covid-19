@@ -1,17 +1,29 @@
 {
     "env": {
-        "browser": true,
-        "es6": true
+      "browser": true,
+      "es6": true
     },
-    "extends": ["plugin:react", "plugin:prettier/recommended", "airbnb"],
-    
+    "extends": [
+      "plugin:react/recommended",
+      "airbnb",
+      "prettier",
+      "prettier/flowtype",
+      "prettier/react",
+      "prettier/standard"
+    ],
     "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 2018,
-        "sourceType": "module"
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "ecmaVersion": 2018,
+      "sourceType": "module"
     },
-    "plugins": ["react"],
-    "rules": {}
-}
+    "plugins": ["react", "prettier"],
+    "rules": {
+      "jsx-quotes": ["error", "prefer-double"],
+      "no-console": "warn",
+      "no-unused-vars": "warn",
+      "prettier/prettier": ["warn", { "doubleQuote": false, "parser": "flow" }],
+      "no-restricted-syntax": ["warn", "FunctionExpression", "WithStatement", "BinaryExpression[operator='in']"]
+    }
+  }

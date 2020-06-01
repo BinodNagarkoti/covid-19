@@ -1,6 +1,8 @@
+/* eslint-disable no-console */
+/* eslint-disable consistent-return */
 import axios from 'axios';
-const url = 'https://covid19.mathdro.id/api';
 
+const url = 'https://covid19.mathdro.id/api';
 export const fetchData = async (country) => {
   let ChangeableURL = url;
   if (country) {

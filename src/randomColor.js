@@ -334,26 +334,25 @@ const materialColor = () => {
     },
   };
   // pick random property
-  //const property = pickRandomProperty(colors);
+  // const property = pickRandomProperty(colors);
   const colorList = colors[pickRandomProperty(colors)];
-  console.table(`colorList:${colorList}`);
+  //   console.table(`colorList:${colorList}`);
   const newColorKey = pickRandomProperty(colorList);
-  console.table(`newcolorKey:${colorList}`);
+  //   console.table(`newcolorKey:${colorList}`);
 
   const newColor = colorList[newColorKey];
-  console.table(`newColor:${colorList}`);
+  //   console.table(`newColor:${colorList}`);
   return newColor;
 };
 
 export const randomColor = () => {
   // # :start with a leading hash, .toString(): changes that number to base 16 as a string
-  return `#${Math.random().toString(16).substr(2, 6)}`; //substr(2,6): gets 6 characters and excludes the leading "0."
+  return `#${Math.random().toString(16).substr(2, 6)}`; // substr(2,6): gets 6 characters and excludes the leading "0."
   // Math.random(): generates random number
 };
 
 export const setColor = () => {
   const newColor = materialColor();
-
-  console.log(`newColor:${newColor}`);
+  //   console.log(`newColor:${newColor}`);
   return newColor;
 };

@@ -15,10 +15,13 @@ class App extends Component {
         country: '',
         color: '',
     };
+
     async componentDidMount() {
         const fetcheddata = await fetchData();
 
         this.setState({ data: fetcheddata, color: `${setColor()}` });
+        document.body.style.backgroundColor = `${setColor()}`;
+
     }
     handleCountryChange = async (country) => {
         // console.log(country);
@@ -44,7 +47,7 @@ class App extends Component {
             );
         }
         return (
-            <div className={style.container} style={{backgroundColor: `${color}` }}>
+            <div className={style.container}>
                 <img
                     className={style.image}
                     src={coronaImage}

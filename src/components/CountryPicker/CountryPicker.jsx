@@ -15,7 +15,7 @@ import {fetchCountries} from '../../api'
      return (
          <FormControl className={styles.formControl}>
             <Paper>
-                <NativeSelect autoWidth={true} defaultValue=''  onChange={(e)=> handleCountryChange(e.target.value)}>
+                <NativeSelect  defaultValue=''  onChange={(e)=> handleCountryChange(e.target.value)}>
                      <option value=''> Global </option>
                     {fetchedCountries.map(
                         country=> <option key={country} value={country}> {country} </option>

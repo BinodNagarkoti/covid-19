@@ -13,25 +13,26 @@ const Footer = () => {
       </Typography>
       <Typography className={styles.social_link}>
         <IconContext.Provider value={{ color: '#385898', size: '25px' }}>
-          <a href="https://www.facebook.com/Binodb/">
-            <FaFacebook /> Facebook
+          <a href="https://www.facebook.com/Binodb/" name="facebook">
+            <FaFacebook />
           </a>
         </IconContext.Provider>
         <IconContext.Provider value={{ color: 'rgb(29, 161, 242)', size: '25px' }}>
-          <a href="https://twitter.com/binod1365">
-            Twitter
+          <a href="https://twitter.com/binod1365" name="Twitter">
             <FaTwitter />
           </a>
         </IconContext.Provider>
         <IconContext.Provider value={{ color: '#003f67', size: '25px' }}>
-          <a href="https://www.linkedin.com/in/binod-nagarkoti-496245128?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B0rrxJXsqT0SQGAfwBMDI7A%3D%3D">
+          <a
+            href="https://www.linkedin.com/in/binod-nagarkoti-496245128?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B0rrxJXsqT0SQGAfwBMDI7A%3D%3D"
+            name="LinkedIn"
+          >
             <FaLinkedin />
-            LinkedIn
           </a>
         </IconContext.Provider>
         <IconContext.Provider value={{ color: 'black', size: '25px' }}>
-          <a href="https://github.com/BinodNagarkoti">
-            <FaGithub /> Github
+          <a href="https://github.com/BinodNagarkoti" name="Github">
+            <FaGithub />
           </a>
         </IconContext.Provider>
       </Typography>

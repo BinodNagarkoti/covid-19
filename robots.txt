@@ -1,6 +1,4 @@
-# https://www.robotstxt.org/robotstxt.html
-User-agent: *
+User-Agent: *
 Disallow:
-Crawl-delay: 5
-Disallow: /cgi-bin/
+
 Sitemap: https://binodnagarkoti.github.io/covid-19/

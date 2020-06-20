@@ -61,8 +61,10 @@ const Charts = ({ data: { recovered, deaths, confirmed }, country }) => {
       <Paper
         style={{
           width: '100vw',
+          backgroundColor: '#e0e0e0',
+          borderRadius: '10px',
           boxShadow:
-            '12px 12px 24px 0 rgba(0, 0, 0, 0.2) inset, -12px -12px 24px 0 rgba(255, 255, 255, 0.5) inset',
+            '12px 12px 24px 0 rgba(0, 0, 0, 0.253) , -12px -12px 24px 0 rgba(255, 255, 255, 0.76) ',
         }}
       >
         {country ? barChart : lineChart}

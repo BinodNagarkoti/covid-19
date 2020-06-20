@@ -7,12 +7,11 @@
 }
 
 .card {
-  box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.253), -12px -12px 24px 0 rgba(255, 255, 255, 0.719);
+  box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.253), -12px -12px 24px 0 rgba(255, 255, 255, 0.76);
   margin: 0 2% !important;
   overflow: hidden !important;
   border-radius: 10px;
 }
-
 
 @media (max-width: 959px) {
   .card {

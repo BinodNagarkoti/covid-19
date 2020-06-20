@@ -12,3 +12,9 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+.MuiInput-underline::before {
+  border-bottom: 0px !important;
+}
+.MuiInput-underline::after {
+  border-bottom: 0px !important;
+}

@@ -27,7 +27,7 @@ const CountryPicker = ({ handleCountryChange }) => {
   }, [setFetchedCountries]);
 
   return (
-    <FormControl variant="outlined" className={classes.formControl}>
+    <FormControl  className={classes.formControl}>
       <InputLabel shrink htmlFor="outlined-age-native-simple">
         Country
       </InputLabel>
@@ -36,7 +36,7 @@ const CountryPicker = ({ handleCountryChange }) => {
         label="Country"
         inputProps={{
           name: 'Country',
-          id: 'outlined-age-native-simple',
+          id: '',
         }}
         onChange={(e) => handleCountryChange(e.target.value)}
       >

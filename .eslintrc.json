@@ -11,6 +11,7 @@
     "prettier/react",
     "prettier/standard"
   ],
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -26,7 +27,6 @@
     "prettier/prettier": ["error", { "doubleQuote": false, "parser": "flow" }],
     "no-restricted-syntax": [
       "warn",
-      "FunctionExpression",
       "WithStatement",
       "BinaryExpression[operator='in']"
     ]

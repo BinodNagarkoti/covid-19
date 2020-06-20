@@ -1,9 +1,7 @@
 .formControl {
   margin-bottom: 50px !important;
 }
-/* .formControl div {
-  background-color: rgba(250, 250, 250, 0.4);
-} */
+
 select {
   border: none !important;
   background-color: #e0e0e0 !important;

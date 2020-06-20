@@ -3,7 +3,6 @@ import { Charts, Cards, CountryPicker, Footer } from './components';
 import style from './App.module.css';
 import { fetchData } from './api';
 import coronaImage from './images/covid-19.png';
-import { setColor } from './randomColor';
 
 const Loading = require('react-loading-animation');
 
@@ -13,21 +12,16 @@ class App extends Component {
     this.state = {
       data: {},
       country: '',
-      color: '',
     };
   }
 
   async componentDidMount() {
     const fetcheddata = await fetchData();
-
-    this.setState({ data: fetcheddata, color: `${setColor()}` });
-    document.body.style.backgroundColor = `${setColor}`;
+    this.setState({ data: fetcheddata });
   }
 
   handleCountryChange = async (country) => {
-    // console.log(country);
     const fetchedData = await fetchData(country);
-    // console.log(fetchedData);
     this.setState({ data: fetchedData, country });
   };
 
@@ -44,7 +38,6 @@ class App extends Component {
     return (
       <main className={style.container}>
         <img className={style.image} src={coronaImage} alt="COVID-19" />
-        {/* <NeumorphicCards data={data} /> */}
         <Cards data={data} />
 
         <CountryPicker handleCountryChange={this.handleCountryChange} />

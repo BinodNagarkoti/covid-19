@@ -27,7 +27,7 @@ const CountryPicker = ({ handleCountryChange }) => {
   }, [setFetchedCountries]);
 
   return (
-    <FormControl  className={classes.formControl}>
+    <FormControl className={classes.formControl}>
       <InputLabel shrink htmlFor="outlined-age-native-simple">
         Country
       </InputLabel>

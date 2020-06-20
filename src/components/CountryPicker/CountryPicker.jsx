@@ -40,7 +40,7 @@ const CountryPicker = ({ handleCountryChange }) => {
         }}
         onChange={(e) => handleCountryChange(e.target.value)}
       >
-        <option  aria-label="None" value="">
+        <option aria-label="None" value="">
           Global
         </option>
         {fetchedCountries.map((country) => (

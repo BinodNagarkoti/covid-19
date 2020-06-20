@@ -5,15 +5,25 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { ThemeProvider } from '@material-ui/core/styles';
+import { Offline, Online } from 'react-detect-offline';
+import { Alert, AlertTitle } from '@material-ui/lab';
 import App from './App';
 import theme from './theme';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
+    <Online>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </Online>
+    <Offline>
+      <Alert severity="error">
+        <AlertTitle> No Internet </AlertTitle> Sorry! There is no{' '}
+        <strong>internet Connection</strong>
+      </Alert>
+    </Offline>
   </React.StrictMode>,
   document.getElementById('root')
 );

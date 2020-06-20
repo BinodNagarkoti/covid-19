@@ -9,14 +9,7 @@ const Cards = ({ data: { confirmed, deaths, recovered, lastUpdate } }) => {
   return (
     <div className={styles.container}>
       <Grid container justify="center">
-        <Grid
-          item
-          component={Card}
-          color="primary"
-          xs={12}
-          md={3}
-          className={cx(styles.card, styles.infected)}
-        >
+        <Grid item color="primary" xs={12} md={3} className={cx(styles.card)}>
           <CardContent>
             <Typography color="textSecondary" gutterBottom>
               Total Infected
@@ -28,7 +21,7 @@ const Cards = ({ data: { confirmed, deaths, recovered, lastUpdate } }) => {
             <Typography variant="body2"> Total Number of active case of COVID-19</Typography>
           </CardContent>
         </Grid>
-        <Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.recoverd)}>
+        <Grid item xs={12} md={3} className={cx(styles.card)}>
           <CardContent>
             <Typography color="textSecondary" gutterBottom>
               Total Recoverd
@@ -41,7 +34,7 @@ const Cards = ({ data: { confirmed, deaths, recovered, lastUpdate } }) => {
             <Typography variant="body2"> Total Number of recovered from COVID-19</Typography>
           </CardContent>
         </Grid>
-        <Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.deaths)}>
+        <Grid item xs={12} md={3} className={cx(styles.card)}>
           <CardContent>
             <Typography color="textSecondary" gutterBottom>
               Total Deaths

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Cards, Charts, CountryPicker, Footer } from './components';
+import { Charts, Cards, CountryPicker, Footer } from './components';
 import style from './App.module.css';
 import { fetchData } from './api';
 import coronaImage from './images/covid-19.png';
@@ -44,7 +44,9 @@ class App extends Component {
     return (
       <main className={style.container}>
         <img className={style.image} src={coronaImage} alt="COVID-19" />
+        {/* <NeumorphicCards data={data} /> */}
         <Cards data={data} />
+
         <CountryPicker handleCountryChange={this.handleCountryChange} />
         <Charts data={data} country={country} />
         <Footer />

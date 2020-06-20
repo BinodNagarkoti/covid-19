@@ -58,7 +58,15 @@ const Charts = ({ data: { recovered, deaths, confirmed }, country }) => {
   ) : null;
   return (
     <div className={styles.container}>
-      <Paper style={{ width: '100vw' }}>{country ? barChart : lineChart}</Paper>
+      <Paper
+        style={{
+          width: '100vw',
+          boxShadow:
+            '12px 12px 24px 0 rgba(0, 0, 0, 0.2) inset, -12px -12px 24px 0 rgba(255, 255, 255, 0.5) inset',
+        }}
+      >
+        {country ? barChart : lineChart}
+      </Paper>
     </div>
   );
 };

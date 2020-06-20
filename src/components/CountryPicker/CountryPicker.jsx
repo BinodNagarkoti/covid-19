@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from 'react';
-import { NativeSelect, FormControl, Paper } from '@material-ui/core';
+import { Select, FormControl, Paper } from '@material-ui/core';
 import InputLabel from '@material-ui/core/InputLabel';
 import { makeStyles } from '@material-ui/core/styles';
 import styles from './CountryPicker.module.css';
@@ -27,26 +27,29 @@ const CountryPicker = ({ handleCountryChange }) => {
   }, [setFetchedCountries]);
 
   return (
-    <FormControl className={classes.formControl}>
-      <InputLabel shrink htmlFor="selectCountry-placeholder">
-        select Country
+    <FormControl variant="outlined" className={classes.formControl}>
+      <InputLabel shrink htmlFor="outlined-age-native-simple">
+        Country
       </InputLabel>
-      <NativeSelect
-        defaultValue=""
+      <Select
+        native
+        label="Country"
         inputProps={{
-          name: 'select Country',
-          id: 'selectCountry-placeholder',
+          name: 'Country',
+          id: 'outlined-age-native-simple',
         }}
         onChange={(e) => handleCountryChange(e.target.value)}
       >
-        <option value=""> Global </option>
+        <option  aria-label="None" value="">
+          Global
+        </option>
         {fetchedCountries.map((country) => (
           <option key={country} value={country}>
             {' '}
             {country}{' '}
           </option>
         ))}
-      </NativeSelect>
+      </Select>
     </FormControl>
   );
 };

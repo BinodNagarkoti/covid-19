@@ -5,7 +5,6 @@ import { Line, Bar } from 'react-chartjs-2';
 import { Paper } from '@material-ui/core';
 import { fetchDailyData } from '../../api';
 import styles from './Charts.module.css';
-import { randomColor } from '../../randomColor';
 
 const Charts = ({ data: { recovered, deaths, confirmed }, country }) => {
   const [dailyData, setDailyData] = useState([]);
@@ -24,13 +23,13 @@ const Charts = ({ data: { recovered, deaths, confirmed }, country }) => {
           {
             data: dailyData.map(({ confirmed }) => confirmed),
             label: 'Infected',
-            borderColor: `${randomColor()}`,
+            borderColor: 'rgba(0,0,255,0.5)',
             fill: true,
           },
           {
             data: dailyData.map(({ deaths }) => deaths),
             label: 'Deaths',
-            borderColor: `${randomColor()}`,
+            borderColor: 'rgba(255,0,0,0.5)',
             backgroundColor: 'rgba(255,0,0,0.5)',
             fill: true,
           },
@@ -64,7 +63,7 @@ const Charts = ({ data: { recovered, deaths, confirmed }, country }) => {
           backgroundColor: '#e0e0e0',
           borderRadius: '10px',
           boxShadow:
-            '12px 12px 24px 0 rgba(0, 0, 0, 0.253) , -12px -12px 24px 0 rgba(255, 255, 255, 0.76) ',
+            '6px 6px 14px 0 rgba(0, 0, 0, 0.253) , -8px -8px 18px 0 rgba(255, 255, 255, 0.76) ',
         }}
       >
         {country ? barChart : lineChart}

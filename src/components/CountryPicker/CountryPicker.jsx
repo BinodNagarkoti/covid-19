@@ -6,6 +6,7 @@ import { Select, FormControl, Paper } from '@material-ui/core';
 import InputLabel from '@material-ui/core/InputLabel';
 import { makeStyles } from '@material-ui/core/styles';
 import styles from './CountryPicker.module.css';
+// eslint-disable-next-line import/named
 import { fetchCountries } from '../../api';
 
 const useStyles = makeStyles((theme) => ({
@@ -22,15 +23,16 @@ const CountryPicker = ({ handleCountryChange }) => {
   useEffect(() => {
     const fetchAPI = async () => {
       setFetchedCountries(await fetchCountries());
+      // console.log(`country List: ${fetchedCountries}`);
     };
     fetchAPI();
   }, [setFetchedCountries]);
 
   return (
     <FormControl className={classes.formControl}>
-      <InputLabel shrink htmlFor="outlined-age-native-simple">
+      {/* <InputLabel shrink htmlFor="outlined-age-native-simple">
         Country
-      </InputLabel>
+      </InputLabel> */}
       <Select
         native
         label="Country"
@@ -44,9 +46,8 @@ const CountryPicker = ({ handleCountryChange }) => {
           Global
         </option>
         {fetchedCountries.map((country) => (
-          <option key={country} value={country}>
-            {' '}
-            {country}{' '}
+          <option key={country.code} value={country.code}>
+            {country.name}
           </option>
         ))}
       </Select>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Charts, Cards, CountryPicker, Footer } from './components';
 import style from './App.module.css';
+// eslint-disable-next-line import/named
 import { fetchData } from './api';
 import coronaImage from './images/covid-19.png';
 
@@ -10,7 +11,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: {},
+      data: { loading: true },
       country: '',
     };
   }
@@ -22,12 +23,12 @@ class App extends Component {
 
   handleCountryChange = async (country) => {
     const fetchedData = await fetchData(country);
-    this.setState({ data: fetchedData, country });
+    this.setState({ data: { loading: fetchedData?.loading, ...fetchedData }, country });
   };
 
   render() {
     const { data, country } = this.state;
-    if (!data.confirmed) {
+    if (data?.loading) {
       return (
         <main className={style.loading}>
           <h1 style={{ textAlign: 'center' }}>Fetching COVID-19 Data</h1>

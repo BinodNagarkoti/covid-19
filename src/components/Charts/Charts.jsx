@@ -10,17 +10,62 @@ import styles from './Charts.module.css';
 const Charts = ({ country }) => {
   const [dailyData, setDailyData] = useState([]);
   const [monthlyData, setMonthlyData] = useState([]);
+  const [monthNames, setMonthNames] = useState([
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ]);
 
+  const fetchAPI = async () => {
+    setDailyData(await fetchDailyData(country));
+    setMonthlyData(await fetchGlobalMonthlyData(country));
+    // console.table(monthlyData);
+  };
   useEffect(() => {
-    const fetchAPI = async () => {
-      setDailyData(await fetchDailyData(country));
-      setMonthlyData(await fetchGlobalMonthlyData(country));
-      console.table(monthlyData);
-    };
     fetchAPI();
   }, [country]);
-
-  const lineChart = dailyData.length ? (
+  const MonthluChart = monthlyData.length ? (
+    <Line
+      data={{
+        labels: monthlyData.map(({ key }) => monthNames[key]),
+        datasets: [
+          {
+            data: monthlyData.map(({ value: { active } }) => active),
+            label: 'Active',
+            borderColor: 'rgba(0,0,255,0.5)',
+            backgroundColor: 'rgba(0,0,255,0.5)',
+            fill: true,
+          },
+          {
+            data: monthlyData.map(({ value: { recovered } }) => recovered),
+            label: 'Recovered',
+            borderColor: 'rgba(0,187,0,0.5)',
+            backgroundColor: 'rgba(0,255,0,0.5)',
+            fill: true,
+          },
+          {
+            data: monthlyData.map(({ value: { deaths } }) => deaths),
+            label: 'Deaths',
+            borderColor: 'rgba(255,0,0,0.5)',
+            backgroundColor: 'rgba(255,0,0,0.5)',
+            fill: true,
+          },
+        ],
+      }}
+    />
+  ) : (
+    ''
+  );
+  const dailyChart = dailyData.length ? (
     <Line
       data={{
         labels: dailyData.map(({ date }) => date),
@@ -79,8 +124,22 @@ const Charts = ({ country }) => {
             '6px 6px 14px 0 rgba(0, 0, 0, 0.253) , -8px -8px 18px 0 rgba(255, 255, 255, 0.76) ',
         }}
       >
-        {/* {country ? barChart : lineChart} */}
-        {lineChart}
+        {/* {country ? barChart : dailyChart} */}
+        <div style={{ marginTop: '20px' }}>
+          <h1 style={{ textAlign: 'center' }}>Daily Charts</h1>
+          {dailyChart}
+        </div>
+        <div style={{ marginTop: '20px' }}>
+          <h1 style={{ textAlign: 'center' }}> Monthly charts</h1>
+          {MonthluChart}
+        </div>
+        {/* <pre style={{ margin: '100px 0 0 0  ' }}>
+          {JSON.stringify(
+            monthlyData.map(({ key }) => monthNames[key]),
+            null,
+            2
+          )} */}
+        {/* </pre> */}
       </Paper>
     </div>
   );

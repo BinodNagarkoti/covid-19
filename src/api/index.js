@@ -9,16 +9,16 @@ const url2 = 'https://corona-api.com/';
 let ChangeableURL = url2;
 
 export const fetchGlobalMonthlyData = async (country = '') => {
-  ChangeableURL = `${url2}/timeline`;
+  ChangeableURL = country ? `${url2}/countries/${country}` : `${url2}/timeline`;
   try {
     const {
       data: { data },
     } = await axios.get(ChangeableURL);
-
+    const covidData = country ? data.timeline : data;
+    console.log(`timeline data ${country}`, country ? data.timeline : data);
     const groupedByDate = d3
       .nest()
       .key((d) => {
-        // console.log(new Date(d.updated_at).getMonth());
         return new Date(d.updated_at).getMonth();
       })
       .rollup((value) => ({
@@ -27,8 +27,10 @@ export const fetchGlobalMonthlyData = async (country = '') => {
         active: d3.sum(value, (d) => d.active),
         recovered: d3.sum(value, (d) => d.recovered),
       }))
-      .entries(data);
-    // console.log('group by date', groupedByDate);
+      .entries(covidData);
+    console.log('group by date', groupedByDate);
+
+    return groupedByDate;
   } catch (error) {
     console.log(error);
   }
@@ -50,16 +52,17 @@ export const fetchData = async (country = '') => {
     const {
       data: { data },
     } = await axios.get(ChangeableURL);
-
+    console.log(`critical data ${country}: ${data?.latest_data?.critical}`);
     const covidData = country ? data.latest_data : data[0];
-    const critical = country ? data.critial : await fetchGlobalCriticalData();
+    const critical = country ? covidData.critical : await fetchGlobalCriticalData();
     const updated_at = country ? data.updated_at : data[0].updated_at;
     const calculated = country ? covidData.calculated : 0;
+    const active = covidData.confirmed - covidData.recovered - covidData.deaths;
     return {
       confirmed: covidData.confirmed,
       recovered: covidData.recovered,
       deaths: covidData.deaths,
-      active: covidData.active,
+      active,
       critical,
       calculated,
       updated_at,

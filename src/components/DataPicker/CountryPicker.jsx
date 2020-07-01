@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import { Select, FormControl, Paper } from '@material-ui/core';
 import InputLabel from '@material-ui/core/InputLabel';
 import { makeStyles } from '@material-ui/core/styles';
-import styles from './CountryPicker.module.css';
+import styles from './DataPicker.module.css';
 // eslint-disable-next-line import/named
 import { fetchCountries } from '../../api';
 

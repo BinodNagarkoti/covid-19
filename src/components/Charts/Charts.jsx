@@ -9,6 +9,8 @@ import styles from './Charts.module.css';
 
 const Charts = ({ country }) => {
   const [dailyData, setDailyData] = useState([]);
+  const [monthlyData, setMonthlyData] = useState([]);
+
   useEffect(() => {
     const fetchAPI = async () => {
       setDailyData(await fetchDailyData(country));

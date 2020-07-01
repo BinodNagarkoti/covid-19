@@ -8,14 +8,14 @@ import * as d3 from 'd3';
 const url2 = 'https://corona-api.com/';
 let ChangeableURL = url2;
 
-const GroupData = async () => {
+const fetchGlobalMonthlyData = async () => {
   ChangeableURL = `${url2}/timeline`;
   try {
     const {
       data: { data },
     } = await axios.get(ChangeableURL);
 
-    const groupedByDate = await d3
+    const groupedByDate = d3
       .nest()
       .key((d) => {
         console.log(new Date(d.updated_at).getMonth());
@@ -33,7 +33,8 @@ const GroupData = async () => {
     console.log(error);
   }
 };
-const fetchcriticalData = async () => {
+// fetch data
+const fetchGlobalCriticalData = async () => {
   const {
     data: { data },
   } = await axios.get(`${url2}/countries`);
@@ -43,77 +44,59 @@ const fetchcriticalData = async () => {
   // console.log(criticalData);
 };
 
-const fetchGlobalData = async () => {
-  ChangeableURL = `${url2}/timeline`;
-  fetchcriticalData();
+export const fetchData = async (country = '') => {
+  ChangeableURL = country ? `${url2}/countries/${country}` : `${url2}/timeline`;
   try {
     const {
       data: { data },
     } = await axios.get(ChangeableURL);
-    // const { data } = fetchedData.data;
+    let covidData = {};
 
-    const {
-      confirmed,
-      recovered,
-      deaths,
-      updated_at,
-      active,
-      new_confirmed,
-      new_recovered,
-      new_deaths,
-    } = data[0];
-    const totalCritical = await fetchcriticalData();
-    // const totalCritical = critical_arr_data.reduce((acc, value) => acc + value);
-    console.log(`total critical value: ${totalCritical}`);
-    // console.log(`lastUpdate:,${ lastUpdate }`)
+    if (country) {
+      // const {
+      //   latest_data: { confirmed, recovered, deaths, active, critical, calculated },
+      //   updated_at,
+      // } = data;
+      covidData = {
+        confirmed: data.latest_data.confirmed,
+        recovered: data.latest_data.recovered,
+        deaths: data.latest_data.deaths,
+        active: data.latest_data.active,
+        critical: data.latest_data.critial,
+        calculated: data.latest_data.calculated,
+        updated_at: data.updated_at,
+      };
+    } else {
+      const totalCritical = await fetchGlobalCriticalData();
 
-    return {
-      confirmed,
-      recovered,
-      deaths,
-      updated_at,
-      active,
-      critical: totalCritical,
-      new_confirmed,
-      new_recovered,
-      new_deaths,
-    };
+      // const {
+      //   confirmed,
+      //   recovered,
+      //   deaths,
+      //   updated_at,
+      //   active,
+      //   // new_confirmed,
+      //   // new_recovered,
+      //   // new_deaths,
+      // } = data[0];
+
+      covidData = {
+        confirmed: data[0].confirmed,
+        recovered: data[0].recovered,
+        deaths: data[0].deaths,
+        active: data[0].active,
+        critical: totalCritical,
+        calculated: data[0].calculated,
+        updated_at: data[0].updated_at,
+      };
+    }
+    return covidData;
   } catch (error) {
-    console.error(error);
+    console.log(error);
   }
 };
-const fetchCountryBasedData = async (country) => {
-  ChangeableURL = `${url2}/countries/${country}`;
-  console.log(`Selected Country:,${country}`);
-  try {
-    const {
-      data: { data },
-    } = await axios.get(ChangeableURL);
-    // const { data } = fetchedData.data;
 
-    const {
-      latest_data: { confirmed, recovered, deaths, active, critical, calculated },
-      updated_at,
-    } = data;
-    return {
-      critical,
-      confirmed,
-      recovered,
-      deaths,
-      updated_at,
-      active,
-
-      loading: false,
-    };
-  } catch (error) {
-    console.error(error);
-  }
-};
-export const fetchData = async (country) => {
-  GroupData();
-  const data = country ? fetchCountryBasedData(country) : fetchGlobalData();
-  return data;
-};
+// fetch daily data
 const fetchGlobalDailyData = async () => {
   try {
     const {
@@ -157,6 +140,7 @@ export const fetchDailyData = async (country) => {
   return data;
 };
 
+// fetch coutries
 export const fetchCountries = async () => {
   try {
     const {

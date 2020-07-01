@@ -29,7 +29,7 @@ const Cards = ({
               Confirmed
             </Typography>
             <Typography variant="h5">
-              <CountUp start={0} end={confirmed} duration={2} separator="," />
+              <CountUp start={0} end={confirmed ?? 0} duration={2} separator="," />
             </Typography>
             <Typography color="textSecondary">{new Date(updated_at).toDateString()}</Typography>
             <Typography variant="body2"> Total Number of active case of COVID-19</Typography>
@@ -41,7 +41,7 @@ const Cards = ({
               Recoverd
             </Typography>
             <Typography variant="h5">
-              <CountUp start={0} end={recovered} duration={2} separator="," />
+              <CountUp start={0} end={recovered ?? 0} duration={2} separator="," />
             </Typography>
             <Typography color="textSecondary">{new Date(updated_at).toDateString()}</Typography>
 
@@ -55,7 +55,7 @@ const Cards = ({
               Critical
             </Typography>
             <Typography variant="h5">
-              <CountUp start={0} end={critical} duration={2} separator="," />
+              <CountUp start={0} end={critical ?? 0} duration={2} separator="," />
             </Typography>
             <Typography color="textSecondary">{new Date(updated_at).toDateString()}</Typography>
 
@@ -69,7 +69,7 @@ const Cards = ({
               Deaths
             </Typography>
             <Typography variant="h5">
-              <CountUp start={0} end={deaths} duration={2} separator="," />
+              <CountUp start={0} end={deaths ?? 0} duration={2} separator="," />
             </Typography>
             <Typography color="textSecondary">{new Date(updated_at).toDateString()}</Typography>
 
@@ -83,7 +83,7 @@ const Cards = ({
               Active
             </Typography>
             <Typography variant="h5">
-              <CountUp start={0} end={active} duration={2} separator="," />
+              <CountUp start={0} end={active ?? 0} duration={2} separator="," />
             </Typography>
             <Typography color="textSecondary">{new Date(updated_at).toDateString()}</Typography>
             <Typography variant="body2"> Total Number of active case of COVID-19</Typography>

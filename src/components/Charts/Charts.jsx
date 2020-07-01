@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-shadow */
 import React, { useState, useEffect } from 'react';
-import { Line, Bar } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import { Paper } from '@material-ui/core';
 // eslint-disable-next-line import/named
-import { fetchDailyData } from '../../api';
+import { fetchDailyData, fetchGlobalMonthlyData } from '../../api';
 import styles from './Charts.module.css';
 
 const Charts = ({ country }) => {
@@ -14,6 +14,8 @@ const Charts = ({ country }) => {
   useEffect(() => {
     const fetchAPI = async () => {
       setDailyData(await fetchDailyData(country));
+      setMonthlyData(await fetchGlobalMonthlyData(country));
+      console.table(monthlyData);
     };
     fetchAPI();
   }, [country]);

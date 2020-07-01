@@ -19,7 +19,7 @@ const Cards = ({
     // new_recovered,
   },
 }) => {
-  console.log(deaths, confirmed, recovered);
+  // console.log(deaths, confirmed, recovered);
   return (
     <div className={styles.container}>
       <Grid container justify="center">

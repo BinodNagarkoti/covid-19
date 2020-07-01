@@ -7,10 +7,10 @@ import { Paper } from '@material-ui/core';
 import { fetchDailyData, fetchGlobalMonthlyData } from '../../api';
 import styles from './Charts.module.css';
 
-const Charts = ({ country }) => {
+const Charts = ({ country, chartType }) => {
   const [dailyData, setDailyData] = useState([]);
   const [monthlyData, setMonthlyData] = useState([]);
-  const [monthNames, setMonthNames] = useState([
+  const [monthNames] = useState([
     'January',
     'February',
     'March',
@@ -24,15 +24,17 @@ const Charts = ({ country }) => {
     'November',
     'December',
   ]);
+  const [selectedChartType, setSelectedChartType] = useState('');
 
   const fetchAPI = async () => {
     setDailyData(await fetchDailyData(country));
     setMonthlyData(await fetchGlobalMonthlyData(country));
+    setSelectedChartType(chartType);
     // console.table(monthlyData);
   };
   useEffect(() => {
     fetchAPI();
-  }, [country]);
+  }, [country, chartType]);
   const MonthluChart = monthlyData.length ? (
     <Line
       data={{
@@ -95,24 +97,7 @@ const Charts = ({ country }) => {
       }}
     />
   ) : null;
-  // const barChart = active ? (
-  //   <Bar
-  //     data={{
-  //       labels: ['infected', 'recovered', 'deaths'],
-  //       datasets: [
-  //         {
-  //           label: 'People',
-  //           backgroundColor: ['rgba(0,0,255,0.5)', 'rgba(0,255,0,0.5)', 'rgba(255,0,0,0.5)'],
-  //           data: [active, recovered, deaths],
-  //         },
-  //       ],
-  //     }}
-  //     options={{
-  //       legends: { display: false },
-  //       title: { display: true, text: `Current State in ${country}` },
-  //     }}
-  //   />
-  // ) : null;
+
   return (
     <div className={styles.container}>
       <Paper
@@ -124,22 +109,11 @@ const Charts = ({ country }) => {
             '6px 6px 14px 0 rgba(0, 0, 0, 0.253) , -8px -8px 18px 0 rgba(255, 255, 255, 0.76) ',
         }}
       >
-        {/* {country ? barChart : dailyChart} */}
         <div style={{ marginTop: '20px' }}>
-          <h1 style={{ textAlign: 'center' }}>Daily Charts</h1>
-          {dailyChart}
-        </div>
-        <div style={{ marginTop: '20px' }}>
-          <h1 style={{ textAlign: 'center' }}> Monthly charts</h1>
-          {MonthluChart}
-        </div>
-        {/* <pre style={{ margin: '100px 0 0 0  ' }}>
-          {JSON.stringify(
-            monthlyData.map(({ key }) => monthNames[key]),
-            null,
-            2
-          )} */}
-        {/* </pre> */}
+          <h1 style={{ textAlign: 'center' }}>{selectedChartType}</h1>
+
+          {selectedChartType === 'DailyData' ? dailyChart : MonthluChart}
+        </div>{' '}
       </Paper>
     </div>
   );

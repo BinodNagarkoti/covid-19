@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Charts, Cards, CountryPicker, Footer } from './components';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import { Charts, Cards, CountryPicker, Footer, ChartPicker } from './components';
 import style from './App.module.css';
 // eslint-disable-next-line import/named
 import { fetchData } from './api';
@@ -13,6 +15,7 @@ class App extends Component {
     this.state = {
       data: { loading: true },
       country: '',
+      chartType: 'DailyData',
     };
   }
 
@@ -26,8 +29,12 @@ class App extends Component {
     this.setState({ data: { loading: fetchedData?.loading, ...fetchedData }, country });
   };
 
+  handleChartChange = (chart) => {
+    this.setState((prevState) => ({ ...prevState, chartType: chart }));
+  };
+
   render() {
-    const { data, country } = this.state;
+    const { data, country, chartType } = this.state;
     if (data?.loading) {
       return (
         <main className={style.loading}>
@@ -42,9 +49,24 @@ class App extends Component {
           <img src={coronaImage} alt="COVID-19" />
         </div>
         <Cards data={data} />
-
-        <CountryPicker handleCountryChange={this.handleCountryChange} />
-        <Charts data={data} country={country} />
+        <div style={{ width: '100%' }}>
+          <Grid
+            container
+            direction="row"
+            style={{ flexGrow: '1' }}
+            justify="center"
+            alignItems="center"
+            spacing={3}
+          >
+            <Grid item sm={6} md={4}>
+              <CountryPicker handleCountryChange={this.handleCountryChange} />
+            </Grid>
+            <Grid item sm={6} md={4}>
+              <ChartPicker handleChartChange={this.handleChartChange} chartType={chartType} />
+            </Grid>
+          </Grid>
+        </div>
+        <Charts data={data} chartType={chartType} country={country} />
         <Footer />
       </main>
     );

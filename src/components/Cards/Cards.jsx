@@ -1,10 +1,11 @@
 /* eslint-disable camelcase */
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { CardContent, Typography, Grid } from '@material-ui/core';
+import { CardContent, Typography, Grid, CardMedia } from '@material-ui/core';
 import CountUp from 'react-countup';
 import cx from 'classnames';
 import styles from './Cards.module.css';
+import recoveredImg from '../../images/heart.svg';
 
 const Cards = ({
   data: {
@@ -38,7 +39,7 @@ const Cards = ({
         <Grid item xs={12} md={2} className={cx(styles.card)}>
           <CardContent>
             <Typography color="textSecondary" gutterBottom>
-              Recoverd
+              Recoverd <small>({((recovered / confirmed) * 100).toFixed(2)}%) </small>
             </Typography>
             <Typography variant="h5">
               <CountUp start={0} end={recovered ?? 0} duration={2} separator="," />
@@ -66,7 +67,7 @@ const Cards = ({
         <Grid item xs={12} md={2} className={cx(styles.card)}>
           <CardContent>
             <Typography color="textSecondary" gutterBottom>
-              Deaths
+              Deaths <small>({((deaths / confirmed) * 100).toFixed(2)}%) </small>
             </Typography>
             <Typography variant="h5">
               <CountUp start={0} end={deaths ?? 0} duration={2} separator="," />

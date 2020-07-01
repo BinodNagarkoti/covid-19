@@ -1,11 +1,10 @@
 /* eslint-disable camelcase */
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { CardContent, Typography, Grid, CardMedia } from '@material-ui/core';
+import { CardContent, Typography, Grid } from '@material-ui/core';
 import CountUp from 'react-countup';
 import cx from 'classnames';
 import styles from './Cards.module.css';
-import recoveredImg from '../../images/heart.svg';
 
 const Cards = ({
   data: {

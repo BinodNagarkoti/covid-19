@@ -54,15 +54,19 @@ class App extends Component {
             container
             direction="row"
             style={{ flexGrow: '1' }}
-            justify="center"
-            alignItems="center"
-            spacing={3}
+            // justify="center"
+            // alignItems="center"
+            spacing={2}
           >
-            <Grid item sm={6} md={4}>
-              <CountryPicker handleCountryChange={this.handleCountryChange} />
-            </Grid>
-            <Grid item sm={6} md={4}>
-              <ChartPicker handleChartChange={this.handleChartChange} chartType={chartType} />
+            <Grid item xs={12}>
+              <Grid container justify="center" spacing={3}>
+                <Grid item>
+                  <CountryPicker handleCountryChange={this.handleCountryChange} />
+                </Grid>
+                <Grid item>
+                  <ChartPicker handleChartChange={this.handleChartChange} chartType={chartType} />
+                </Grid>
+              </Grid>
             </Grid>
           </Grid>
         </div>

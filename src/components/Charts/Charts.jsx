@@ -6,7 +6,6 @@ import { Paper } from '@material-ui/core';
 // eslint-disable-next-line import/named
 import { fetchDailyData, fetchGlobalMonthlyData, fetchGlobalYearlyData } from '../../api/index';
 import styles from './Charts.module.css';
-
 const Charts = ({ country, chartType }) => {
   const [dailyData, setDailyData] = useState([]);
   const [monthlyData, setMonthlyData] = useState([]);
@@ -32,13 +31,13 @@ const Charts = ({ country, chartType }) => {
         setMonthlyData(await fetchGlobalMonthlyData(country));
         setYearlyData(await fetchGlobalYearlyData(country));
         setSelectedChartType(chartType);
-        console.log('daily:', dailyData);
+        
   };
   useEffect(() => {
     fetchAPI();
   }, [country, chartType]);
   const MonthlyChart = monthlyData.length ? (
-    <Line
+      <Line id={chartType}
       data={{
         labels: monthlyData.map(({ key }) => monthNames[key]),
         datasets: [
@@ -70,7 +69,7 @@ const Charts = ({ country, chartType }) => {
     ''
   );
   const dailyChart = dailyData.length ? (
-    <Line
+      <Line id={chartType}
       data={{
         labels: dailyData.map(({ date }) => date),
         datasets: [
@@ -101,7 +100,7 @@ const Charts = ({ country, chartType }) => {
     ) : null;
 
     const yearlyChart = yearlyData.length>0 ? (
-        <Line
+        <Line id={chartType}
             data={{
                 labels: yearlyData.map(({ key }) => key).reverse(),
                 datasets: [

@@ -9,7 +9,7 @@ import style from './App.module.css';
 // eslint-disable-next-line import/named
 import { fetchData } from './api';
 import coronaImage from './images/covid-19.png';
-
+import { scrollToElement } from './utils'
 const Loading = require('react-loading-animation');
 
 class App extends Component {
@@ -18,7 +18,7 @@ class App extends Component {
     this.state = {
       data: { loading: true },
       country: '',
-      chartType: 'DailyData',
+      chartType: 'Daily Data',
     };
   }
 
@@ -33,7 +33,8 @@ class App extends Component {
   };
 
   handleChartChange = (chart) => {
-    this.setState((prevState) => ({ ...prevState, chartType: chart }));
+      this.setState((prevState) => ({ ...prevState, chartType: chart }));
+      
   };
 
   render() {

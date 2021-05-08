@@ -4,7 +4,7 @@
 import { FormControl, Select } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
-
+import { scrollToElement} from"../../utils"
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
@@ -26,14 +26,14 @@ const ChartPicker = ({ handleChartChange, chartType }) => {
 
   return (
     <FormControl className={classes.formControl}>
-      <Select
-        native
-        label="Chart"
-        inputProps={{
-            name: 'chart',
-            id: `${chartType}_chart`,
-        }}
-        onChange={(e) => handleChartChange(e.target.value)}
+          <Select
+              native
+              label="Chart"
+              inputProps={{
+                  name: 'chart',
+                  id: `${chartType}_chart`,
+              }}
+              onChange={(e) => { handleChartChange(e.target.value); return scrollToElement(chartType, "smooth", "center")}}
       >
         <option value="Daily Data">
           Daily Data

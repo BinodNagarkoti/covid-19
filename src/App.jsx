@@ -52,7 +52,7 @@ class App extends Component {
           <img src={coronaImage} alt="COVID-19" />
         </div>
         <Cards data={data} />
-        <div style={{ width: '100%' }}>
+        <div>
           <Grid
             container
             direction="row"
@@ -73,8 +73,8 @@ class App extends Component {
             </Grid>
           </Grid>
         </div>
-        <Charts data={data} chartType={chartType} country={country} />
-        <Footer />
+            <Charts data={data} chartType={chartType} country={country} />
+              <Footer />
       </main>
     );
   }

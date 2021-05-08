@@ -12,8 +12,8 @@
   flex-direction: column;
 }
 .container .image {
-  margin: 5%;
-  max-width: fit-content;
+  margin: 5em;
+  max-width: fit-content();
 }
 .image img {
   max-width: 370px;

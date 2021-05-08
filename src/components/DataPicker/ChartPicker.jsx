@@ -1,13 +1,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState, useEffect } from 'react';
-import { Select, FormControl, Paper } from '@material-ui/core';
-import InputLabel from '@material-ui/core/InputLabel';
+import { FormControl, Select } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import styles from './DataPicker.module.css';
-// eslint-disable-next-line import/named
-import { fetchCountries } from '../../api';
+import React from 'react';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -34,16 +30,19 @@ const ChartPicker = ({ handleChartChange, chartType }) => {
         native
         label="Chart"
         inputProps={{
-          name: 'chart',
-          id: '',
+            name: 'chart',
+            id: `${chartType}_chart`,
         }}
         onChange={(e) => handleChartChange(e.target.value)}
       >
-        <option value="DailyData" selected={chartType === 'DailyData'}>
+        <option value="Daily Data">
           Daily Data
         </option>
-        <option value="MonthlyData" selected={chartType === 'MonthlyData'}>
-          Monthly Data
+        <option value="Monthly Data">
+                  Monthly Data
+        </option>
+        <option value="Yearly Data">
+                  Yearly Data
         </option>
       </Select>
     </FormControl>

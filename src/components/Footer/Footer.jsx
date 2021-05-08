@@ -12,7 +12,8 @@ const Footer = () => {
         <Link underline="none" color="primary" href="https://github.com/BinodNagarkoti">
           Binod Nagarkoti
         </Link>
-      </Typography>
+          </Typography>
+          <br/>
       <Typography className={styles.social_link}>
         <IconContext.Provider value={{ color: '#385898', size: '25px' }}>
           <Link underline="none" href="https://www.facebook.com/Binodb/" name="facebook">
@@ -38,7 +39,8 @@ const Footer = () => {
             <FaGithub />
           </Link>
         </IconContext.Provider>
-      </Typography>
+          </Typography>
+          <br />
       <Typography color="textSecondary"> May 31 2020 </Typography>
     </div>
   );

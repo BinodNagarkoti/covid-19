@@ -8,6 +8,34 @@ import * as d3 from 'd3';
 const url2 = 'https://corona-api.com/';
 let ChangeableURL = url2;
 
+export const fetchGlobalYearlyData = async (country = '') => {
+    ChangeableURL = country ? `${url2}/countries/${country}` : `${url2}/timeline`;
+    try {
+        const {
+            data: { data },
+        } = await axios.get(ChangeableURL);
+        const covidData = country ? data.timeline : data;
+        console.log(`yearly timeline data ${country}`, country ? data.timeline : data);
+        const groupedByYear = d3
+            .nest()
+            .key((d) => {
+                return new Date(d.updated_at).getFullYear();
+            })
+            .rollup((value) => ({
+                confirmed: d3.sum(value, (d) => d.confirmed),
+                deaths: d3.sum(value, (d) => d.deaths),
+                active: d3.sum(value, (d) => d.active),
+                recovered: d3.sum(value, (d) => d.recovered),
+            }))
+            .entries(covidData);
+        console.log('group by year', groupedByYear);
+
+        return groupedByYear;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 export const fetchGlobalMonthlyData = async (country = '') => {
   ChangeableURL = country ? `${url2}/countries/${country}` : `${url2}/timeline`;
   try {
@@ -15,8 +43,8 @@ export const fetchGlobalMonthlyData = async (country = '') => {
       data: { data },
     } = await axios.get(ChangeableURL);
     const covidData = country ? data.timeline : data;
-    console.log(`timeline data ${country}`, country ? data.timeline : data);
-    const groupedByDate = d3
+    console.log(`monthly timeline data ${country}`, country ? data.timeline : data);
+    const groupedByMonth = d3
       .nest()
       .key((d) => {
         return new Date(d.updated_at).getMonth();
@@ -28,12 +56,35 @@ export const fetchGlobalMonthlyData = async (country = '') => {
         recovered: d3.sum(value, (d) => d.recovered),
       }))
       .entries(covidData);
-    console.log('group by date', groupedByDate);
+      console.log('group by month', groupedByMonth);
 
-    return groupedByDate;
+      return groupedByMonth;
   } catch (error) {
     console.log(error);
   }
+};
+
+// fetch daily data
+
+export const fetchDailyData = async (country) => {
+    ChangeableURL = country ? `${url2}/countries/${country}` : `${url2}/timeline`;
+    try {
+        const {
+            data: { data },
+        } = await axios.get(ChangeableURL);
+        const covidData = country ? data.timeline : data;
+        const modifiedData = covidData.map((dailyData) => ({
+            recovered: dailyData.recovered,
+            active: dailyData.active,
+            deaths: dailyData.deaths,
+            date: dailyData.date,
+            loading: false,
+        }));
+
+        return modifiedData;
+    } catch (error) {
+        console.log(error);
+    }
 };
 // fetch data
 const fetchGlobalCriticalData = async () => {
@@ -72,28 +123,7 @@ export const fetchData = async (country = '') => {
   }
 };
 
-// fetch daily data
 
-export const fetchDailyData = async (country) => {
-  ChangeableURL = country ? `${url2}/countries/${country}` : `${url2}/timeline`;
-  try {
-    const {
-      data: { data },
-    } = await axios.get(ChangeableURL);
-    const covidData = country ? data.timeline : data;
-    const modifiedData = covidData.map((dailyData) => ({
-      recovered: dailyData.recovered,
-      active: dailyData.active,
-      deaths: dailyData.deaths,
-      date: dailyData.date,
-      loading: false,
-    }));
-
-    return modifiedData;
-  } catch (error) {
-    console.log(error);
-  }
-};
 
 // export const fetchDailyData = async (country) => {
 //   const data = country ? fetchCountryBasedDailyData(country) : fetchGlobalDailyData();
@@ -109,7 +139,7 @@ export const fetchCountries = async () => {
 
     const availabel_data = data.filter((country) => country.latest_data.confirmed > 0);
     // console.log('check avaiable data', availabel_data);
-    return availabel_data.map((country) => ({ name: country.name, code: country.code }));
+    return availabel_data.map((country) => ({ name: country.name, code: country.code })).sort();
   } catch (error) {
     console.error(error);
   }
